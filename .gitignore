@@ -1,7 +1,16 @@
-node_modules
-private/
-.env
-private*
+# SSH keys
 github_ci_cd
 github_ci_cd*
-github_ci_cd.pub
+*.pem
+*.key
+
+# Environment & secrets
+.env
+.env.*
+
+# Private directories
+private/
+private*
+
+# Dependencies
+node_modules/
