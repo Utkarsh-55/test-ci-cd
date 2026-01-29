@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Subscribe</title>
+</head>
+<body>
+  <h2>Subscribe to Newsletter</h2>
+
+  <form id="subscribeForm">
+    <input
+      type="email"
+      id="email"
+      placeholder="Enter your email"
+      required
+    />
+    <button type="submit">Subscribe</button>
+  </form>
+
+  <p id="status"></p>
+
+  <script>
+    const form = document.getElementById('subscribeForm');
+    const status = document.getElementById('status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+
+      const res = await fetch('/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      const data = await res.json();
+      status.innerText = data.message;
+    });
+  </script>
+</body>
+</html>
